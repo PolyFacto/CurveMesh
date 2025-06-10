@@ -5,7 +5,7 @@ import sys
 from methods import print_error
 
 
-libname = "EXTENSION-NAME"
+libname = "CurveMesh"
 projectdir = "demo"
 
 localEnv = Environment(tools=["default"], PLATFORM="")
@@ -37,8 +37,23 @@ Run the following command to download godot-cpp:
 
 env = SConscript("godot-cpp/SConstruct", {"env": env, "customs": customs})
 
-env.Append(CPPPATH=["src/"])
-sources = Glob("src/*.cpp")
+def find_cpp_files(path, exclude=None):
+    cpp_files = []
+    exclude = set(os.path.abspath(f) for f in (exclude or []))
+
+    for root, _, files in os.walk(path):
+        for file in files:
+            if file.endswith(".cpp"):
+                full_path = os.path.abspath(os.path.join(root, file))
+                if full_path not in exclude:
+                    cpp_files.append(os.path.join(root, file))
+    return cpp_files
+
+excluded_files = ["src/gen/doc_data.gen.cpp"]
+sources = find_cpp_files("src", exclude=excluded_files)
+
+# env.Append(CPPPATH=["src/"])
+# sources = Glob("src/*.cpp")
 
 if env["target"] in ["editor", "template_debug"]:
     try:
