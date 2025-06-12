@@ -17,18 +17,15 @@ public:
 	CurveMesh();
 	~CurveMesh() override = default;
 
-	void set_mesh(const Ref<Mesh> &p_mesh);
-	void set_use_tilt(bool p_use_tilt);
-	void set_cubic(bool p_cubic);
-
-	Ref<Mesh> set_start_end(Vector3 p_start_pos, Vector3 p_start_tangent, Vector3 p_end_pos, Vector3 p_end_tangent);
-	Ref<Mesh> set_tilt(float p_start_tilt, float p_end_tilt);
+	void init(const Ref<Mesh> &p_mesh, const bool p_cubic);
+	Ref<Mesh> create_curve_mesh(const Vector3 p_start_pos, const Vector3 p_start_tangent, const float p_start_tilt, const Vector3 p_end_pos, const Vector3 p_end_tangent, const float p_end_tilt);
 
 private:
-	Ref<Curve3D> curve = nullptr;
-	Ref<Mesh> mesh = nullptr;
-	bool cubic = true;
-	bool use_tilt = true;
+	Ref<Curve3D> curve;
+	Ref<Mesh> mesh;
+	bool cubic;
+
+	bool b_init;
 
 private:
 	Ref<Mesh> update_mesh();
