@@ -30,7 +30,7 @@ Ref<Mesh> CurveMesh::create_curve_mesh(const Vector3 p_start_pos, const Vector3 
     if (curve.is_null()) return nullptr;
     if (!b_init)
     {
-        print_error("Please call the init function before.");
+        print_error("Please call the init() function before.");
         return nullptr;
     }
 
@@ -54,8 +54,6 @@ Ref<Mesh> CurveMesh::update_mesh()
 {
     if (mesh.is_null()) return nullptr;
 
-    float curve_length = curve->get_baked_length();
-
     Ref<ArrayMesh> current_deformed_mesh;
     current_deformed_mesh.instantiate();
 
@@ -70,6 +68,7 @@ Ref<Mesh> CurveMesh::update_mesh()
     float min_proj = std::numeric_limits<float>::infinity();
     float max_proj = -std::numeric_limits<float>::infinity();
 
+    float curve_length = curve->get_baked_length();
     Vector3 forward = Vector3(0.0f, 0.0f, -1.0f);
 
     for (int i = 0; i < mdt->get_vertex_count(); i++)
