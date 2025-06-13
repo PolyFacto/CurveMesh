@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="CurveMesh" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Generates a deformed mesh along a 3D curve.
+	</brief_description>
+	<description>
+		CurveMesh allows you to deform a base mesh along a 3D Curve. This is useful for creating tubes, cables, rails, or any geometry that follows a path in 3D space.
+		You must provide a base mesh and define start/end control points to generate a smooth curve.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="init">
+			<return type="void" />
+			<param index="0" name="mesh" type="Mesh" />
+			<param index="1" name="cubic" type="bool" />
+			<description>
+				Initializes the CurveMesh with a base mesh and sets whether the curve should be cubic or linear.
+			</description>
+		</method>
+		<method name="create_curve_mesh">
+			<return type="Mesh" />
+			<param index="0" name="start_position" type="Vector3" />
+			<param index="1" name="start_tangent" type="Vector3" />
+			<param index="2" name="start_tilt" type="float" />
+			<param index="3" name="end_position" type="Vector3" />
+			<param index="4" name="end_tangent" type="Vector3" />
+			<param index="5" name="end_tilt" type="float" />
+			<description>
+				Creates and returns a new mesh deformed along a generated curve defined by the given parameters.
+				This method builds a temporary curve segment between the start and end points and deforms the base mesh to follow it.
+			</description>
+		</method>
+	</methods>
+</class>
