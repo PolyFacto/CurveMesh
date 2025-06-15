@@ -17,7 +17,7 @@ public:
 	CurveMesh();
 	~CurveMesh() override = default;
 
-	void init(const Ref<Mesh> &p_mesh, const bool p_cubic);
+	void init(const Ref<Mesh> &p_mesh, const bool p_cubic, const bool p_up_vector);
 	Ref<Mesh> create_curve_mesh(const Vector3 p_start_pos, const Vector3 p_start_tangent, const float p_start_tilt, const Vector3 p_end_pos, const Vector3 p_end_tangent, const float p_end_tilt);
 
 private:

@@ -10,14 +10,6 @@
 	<tutorials>
 	</tutorials>
 	<methods>
-		<method name="init">
-			<return type="void" />
-			<param index="0" name="mesh" type="Mesh" />
-			<param index="1" name="cubic" type="bool" />
-			<description>
-				Initializes the CurveMesh with a base mesh and sets whether the curve should be cubic or linear.
-			</description>
-		</method>
 		<method name="create_curve_mesh">
 			<return type="Mesh" />
 			<param index="0" name="start_position" type="Vector3" />
@@ -29,6 +21,15 @@
 			<description>
 				Creates and returns a new mesh deformed along a generated curve defined by the given parameters.
 				This method builds a temporary curve segment between the start and end points and deforms the base mesh to follow it.
+			</description>
+		</method>
+		<method name="init">
+			<return type="void" />
+			<param index="0" name="mesh" type="Mesh" />
+			<param index="1" name="cubic" type="bool" />
+			<param index="2" name="up_vector" type="bool" />
+			<description>
+				Initializes the CurveMesh with a base mesh and sets whether the curve should be cubic or linear.
 			</description>
 		</method>
 	</methods>

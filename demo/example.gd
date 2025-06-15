@@ -9,7 +9,7 @@ var mesh : CurveMesh
 
 func _ready():
 	mesh = CurveMesh.new()
-	mesh.init(mesh_source, true)
+	mesh.init(mesh_source, true, path_3d.curve.up_vector_enabled)
 	
 	path_3d.connect("curve_changed", curve_changed)
 

@@ -12,12 +12,13 @@ CurveMesh::CurveMesh()
 
 void CurveMesh::_bind_methods()
 {
-    ClassDB::bind_method(D_METHOD("init", "mesh", "cubic"), &CurveMesh::init);
+    ClassDB::bind_method(D_METHOD("init", "mesh", "cubic", "up_vector"), &CurveMesh::init);
     ClassDB::bind_method(D_METHOD("create_curve_mesh", "start_position", "start_tangent", "start_tilt", "end_position", "end_tangent", "end_tilt"), &CurveMesh::create_curve_mesh);
 }
 
-void CurveMesh::init(const Ref<Mesh> &p_mesh, const bool p_cubic)
+void CurveMesh::init(const Ref<Mesh> &p_mesh, const bool p_cubic, const bool p_up_vector)
 {
+    curve->set_up_vector_enabled(p_up_vector);
     mesh = p_mesh;
     cubic = p_cubic;
 
